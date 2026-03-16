@@ -21,9 +21,9 @@ A clean, single-file AI chat web app that works with any **LiteLLM** or **OpenAI
 
 ## 📸 Preview
 
-| Desktop | Mobile |
-|---------|--------|
-| ![desktop](https://raw.githubusercontent.com/user3868/litellm-chat-ui/main/docs/desktop.png) | ![mobile](https://raw.githubusercontent.com/user3868/litellm-chat-ui/main/docs/mobile.png) |
+| Desktop | Mobile Chat | Mobile Sidebar |
+|---------|-------------|----------------|
+| ![desktop](https://raw.githubusercontent.com/user3868/litellm-chat-ui/master/docs/desktop.png) | ![mobile](https://raw.githubusercontent.com/user3868/litellm-chat-ui/master/docs/mobile.png) | ![mobile-sidebar](https://raw.githubusercontent.com/user3868/litellm-chat-ui/master/docs/mobile-sidebar.png) |
 
 ---
 

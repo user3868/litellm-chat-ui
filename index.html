@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>AI Chat</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
 <style>
 /* ===== RESET & ROOT ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -640,6 +641,10 @@ body {
 <!-- ===================== MAIN ===================== -->
 <div id="main">
 
+  <div id="mixed-warning" style="display:none;background:#7c3a00;color:#ffd;font-size:12px;padding:7px 14px;line-height:1.5;flex-shrink:0;">
+    ⚠️ 当前页面为 HTTPS，而 API 地址是 HTTP，浏览器会阻止请求（混合内容限制）。<br>
+    请在 ⚙️ 设置 里换成 HTTPS 的 API 地址，或改用本地 <code style="background:rgba(0,0,0,.3);padding:1px 4px;border-radius:3px">python server.py</code> 运行。
+  </div>
   <div id="topbar">
     <button id="hamburger" onclick="openSidebar()">☰</button>
     <div class="model-wrap">
@@ -1088,6 +1093,10 @@ function applySettings() {
   saveSettings();
   toggleSettings();
   fetchModels(true);
+  // 重新检测混合内容
+  const warn = document.getElementById('mixed-warning');
+  warn.style.display = (location.protocol === 'https:' && state.cfg.apiBase.startsWith('http://'))
+    ? 'block' : 'none';
 }
 
 // ================================================================
@@ -1160,6 +1169,13 @@ function init() {
   renderConvList();
   renderChat();
   // 不自动拉取模型列表，默认 vision-model-1，用户点 ↺ 才刷新
+
+  // 混合内容检测：HTTPS 页面 + HTTP API → 显示警告
+  const isHttps    = location.protocol === 'https:';
+  const apiIsHttp  = state.cfg.apiBase.startsWith('http://');
+  if (isHttps && apiIsHttp) {
+    document.getElementById('mixed-warning').style.display = 'block';
+  }
 }
 
 window.addEventListener('resize', () => {

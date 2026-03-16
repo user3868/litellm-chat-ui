@@ -657,9 +657,10 @@ body {
   </div>
 
   <div id="chat-box">
-    <div class="welcome">
-      <h2>👋 开始对话</h2>
-      <p>从左侧新建对话，选择模型，支持上传图片</p>
+    <div class="welcome" id="welcome-msg">
+      <h2>👋 欢迎使用 AI Chat</h2>
+      <p>请先点击左侧 ⚙️ <strong>API 设置</strong>，填入你的 LiteLLM 或 OpenAI 兼容接口地址和密钥，然后新建对话即可开始。</p>
+      <p style="margin-top:10px;font-size:12px;opacity:.6">支持 LiteLLM · Ollama · vLLM · OpenAI · 任意兼容接口</p>
     </div>
   </div>
 
@@ -679,9 +680,8 @@ body {
 // ================================================================
 // CONSTANTS & DEFAULTS
 // ================================================================
-const _x=(s,k=0x5A)=>atob(s).split('').map(c=>String.fromCharCode(c.charCodeAt(0)^k)).join('');
-const DEFAULT_API_BASE = _x('Mi4uKmB1dWtiaXRsdG1rdG9gbmpqa3Usaw==');
-const DEFAULT_API_KEY  = _x('KTF3LjscAwwLCC84NBYCDB8vaTR3HC8uLQ==');
+const DEFAULT_API_BASE = '';
+const DEFAULT_API_KEY  = '';
 
 const LS_CONVS    = 'aichat_v2_convs';
 const LS_SETTINGS = 'aichat_v2_settings';
